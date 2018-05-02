@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="js/4_basic.js"></script>
+	<body>
+
+		<H3><p>Utilizar las directivas de aplicación y controlador, en archivo JS.</p></H3>
+        <H4><p>AngularJS utiliza objetos como JavaScript.</p></H4>
+		<div ng-app="aplicacion" ng-controller="controlador">
+
+		Nombre: <input type="text" ng-model="nombre"><br>
+		Apellido: <input type="text" ng-model="apellido"><br>
+		<br>
+		</p>
+		Nombre completop declarado en el controlador es: {{nombre + " " + apellido}}
+		
+		</p>
+		Nombre completop declarado en objeto es: {{obj.nombre + " " + obj.apellido}}
+		
+		<p>
+		Nombre completop declarado en objeto con binding: <span ng-bind="obj.apellido"></span>  <span ng-bind="obj.nombre"></span></p>
+
+		</div>
+
+	</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="aplicacion">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="js/7_basic.js"></script>
+	<body>
+
+		<H3><p>Angular directives. </p></H3>
+		 Existen tres formas de relacionar el scope entre la directiva y el controlador
+		 <br>
+		 1. Por defecto: El controlador puede ver el scope de la directiva y viseversa.
+		 <br>
+		 2. Heredar el scope de la directiva. Los objetos que se crean en la directiva son internos de la directiva, y no visible por el padre. (encapsular la data dentro de la directiva)<br>
+		  Esto se hace solo adicionando el atributo scope : true
+		 <br>
+		 3. Isolate Scope<br>
+		  
+		 </p>
+
+		<div ng-controller="controlador">
+		</p>
+		<primera-directiva productos = "productos"></primera-directiva>
+		<primera-directiva productos2 = "productos"></primera-directiva>
+		</div>
+
+	 <h2>Tres tipos de directivas: Componentes, decoradores y estructurales<h2>
+	</body>
+</html>

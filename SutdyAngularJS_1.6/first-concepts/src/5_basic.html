@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="aplicacion">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="js/5_basic.js"></script>
+	<body>
+
+		<H3><p>Angular modules, controllers, directives.</p></H3>
+
+		<div ng-controller="controlador">
+
+		Nombre: <input type="text" ng-model="nombre"><br>
+		Apellido: <input type="text" ng-model="apellido"><br>
+		<br>
+		</p>
+		Nombre completop es: {{nombre + " " + apellido}}
+
+		</div></p>
+		Define Camel Case --> html no es case sencitive
+		Existen 4 formas de crear directivas, dos recomendadas y dos que no lo son y se utilizan para soportar versiones viejas de IE:</p>
+		Recomendadas:</p>
+		1. Dentro de los tags html (ng-app)
+		<div data_primera:directiva></div></p>
+		2. Como un elemento (custom tag)
+		<x-primera:directiva></x-primera:directiva></p>
+		No recomendadas:</p>
+		3. En comentarios:
+		<!-- directive: primera-directiva -->
+		</p>
+		4. Como clase</p>
+		<div class="primera:directiva" />
+
+	</body>
+</html>

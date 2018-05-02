@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="aplicacion">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="js/6_basic.js"></script>
+	<body>
+
+		<H3><p>Angular directives. Usando templates</p></H3>
+
+		<div ng-controller="controlador">
+
+		Nombre: <input type="text" ng-model="nombre"><br>
+		Apellido: <input type="text" ng-model="apellido"><br>
+		<br>
+		</p>
+		Nombre completop es: {{nombre + " " + apellido}}
+
+		<primera-directiva></primera-directiva>
+		</div>
+
+	 <h2>Tres tipos de directivas: Componentes, decoradores y estructurales<h2>
+	</body>
+</html>

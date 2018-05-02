@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<body>
+
+		<H3><p>Utilizar las directivas de aplicación y controlador, dentro del archivo HTML.</p></H3>
+
+		<div ng-app="aplicacion" ng-controller="controlador">
+
+		Nombre: <input type="text" ng-model="nombre"><br>
+		Apellido: <input type="text" ng-model="apellido"><br>
+		<br>
+		</p>
+		Nombre completop es: {{nombre + " " + apellido}}
+
+		</div>
+
+		<script>
+		var app = angular.module('aplicacion', []);
+		app.controller('controlador', function($scope) {
+			$scope.nombre= "Manuel";
+			$scope.apellido= "Gallego";
+		});
+		</script>
+
+	</body>
+</html>

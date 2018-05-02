@@ -1,0 +1,19 @@
+<div>
+	Productos :
+	</p>
+	 <h3>Nombre</h3> {{productos.nombre}}
+	 
+	 <h3>Costo:</h3> {{productos.costo}}
+	 </br>
+	 <h3>Faltantes:</h3> 
+	 <div ng-repeat='faltantes in productos.pendientes'>
+		{{faltantes}}
+	 </div>
+	 </br>
+	 
+	 </br>
+	 <input type="button" value="clickMe" ng-click="clickFunction(productos)" ng-show="!productos.click"/>
+	 <div ng-show="!!productos.click">
+	 Es click: {{productos.click}}
+	 </div>
+</div>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+<div ng-app="" data-ng-init="firstName='Initial Name'">
+   <h1>Some Tips</h3>
+   <p/>
+   <h2>1. uso del prefijo data</h2>
+  <p>Nombre habla: <input type="text" ng-model="name"></p>
+  <p data-ng-bind="name"></p>
+  </p>
+  <h2>2. Init directive</h2>
+  <p>El nombre por defecto es <span data-ng-bind="firstName"></span></p>
+  
+  <h2>3. Expresions:</h2>Pueden ser utilizadas para remplazar valores en los css, en los bindings, etc.
+    Ventaja sobre JavaScript expresions es que se pueden utilizar sobre el HTML, tambien soporta filtros.
+	Desventaja es que no soporta conditionales, loops, and exceptions
+  <p>Vea la suma es: {{ 5 + 5 }}</p>
+  <h2>4. Binding Expresions:</h2>
+  Nombre escucha: <input type="text" ng-model="name">
+  <p>{{name}}</p>
+</div>
+
+</body>
+</html>
