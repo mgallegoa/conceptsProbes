@@ -1,3 +1,8 @@
+" colorscheme darkblue
+" colorscheme murphy
+" colorscheme torte
+colorscheme gruvbox
+
 " Set compatibility to Vim only.
 set nocompatible
 set nolist
@@ -93,7 +98,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 call plug#begin('~/.vim/plugged')
-Plug 'vim-airline/vim-airline'     " Theme
+Plug 'morhetz/gruvbox'     " Theme
 
 " IDE
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " For search files
@@ -107,9 +112,8 @@ Plug 'scrooloose/nerdtree'        " For easy tree file navigation
 Plug 'christoomey/vim-tmux-navigator' " For easy navigator between tree and editor
 
 call plug#end()
-let g:coc_global_extensions = [ 'coc-tsserver' ]
 
-let g:airline_powerline_fonts = 1
+let g:coc_global_extensions = [ 'coc-tsserver' ]
 
 " nerdtree configuration for close tree afther select file
 let NERDTreeQuitOnOpen=1
