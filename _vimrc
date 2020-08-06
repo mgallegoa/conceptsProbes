@@ -1,8 +1,3 @@
-" colorscheme darkblue
-" colorscheme murphy
-" colorscheme torte
-colorscheme gruvbox
-
 " Set compatibility to Vim only.
 set nocompatible
 set nolist
@@ -72,6 +67,9 @@ set ignorecase
 " Include only uppercase words with uppercase search term
 set smartcase
 
+" Use ~x on an English Windows version or ~n for French.
+au GUIEnter * simalt ~x 
+
 " Store info from no more than 100 files at a time, 9999 lines of text, 100kb of data. Useful for copying large amounts of data between files.
 set viminfo='100,<9999,s100
 
@@ -107,11 +105,18 @@ Plug 'pangloss/vim-javascript'    " JavaScript support
 Plug 'leafgarland/typescript-vim' " TypeScript syntax
 Plug 'neoclide/coc.nvim' , { 'branch' : 'release' } " Code completion
 
-Plug 'easymotion/vim-easymotion'  " For easy motion in vim
+Plug 'easymotion/vim-easymotion'  " For easy motion in vim, search in screen
 Plug 'scrooloose/nerdtree'        " For easy tree file navigation
 Plug 'christoomey/vim-tmux-navigator' " For easy navigator between tree and editor
 
 call plug#end()
+" colorscheme darkblue
+" colorscheme murphy
+" colorscheme torte
+colorscheme gruvbox
+let g:gruvbox_statusbar_font_size_16='16'
+let g:gruvbox_buttons_font_size_16='16'
+let g:gruvbox_buttons_font_size='16'
 
 let g:coc_global_extensions = [ 'coc-tsserver' ]
 
