@@ -81,7 +81,7 @@ vnoremap <Space> zf
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview"
 let mapleader = " "
-noremap <leader>w :w<cr>
+noremap <leader>w :w <cr>
 noremap <leader>q :q<cr>
 noremap <leader>wq :wq<cr>
 noremap <leader>gs :CocSearch
@@ -90,6 +90,9 @@ noremap <leader>fs :Files<cr>
 nmap <leader>s <Plug>(easymotion-s2)
 " For file tree, use m for menu option on the tree
 nmap <leader>nt :NERDTreeFind<cr>
+"For run Prettier, formating code
+nmap <leader>p <Plug>(Prettier)<cr>
+
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -104,9 +107,15 @@ Plug 'junegunn/fzf.vim'                             " For search files
 Plug 'pangloss/vim-javascript'    " JavaScript support
 Plug 'leafgarland/typescript-vim' " TypeScript syntax
 Plug 'neoclide/coc.nvim' , { 'branch' : 'release' } " Code completion
+Plug 'othree/html5.vim'   "  Code completion for html5
+Plug 'ap/vim-css-color'    " For color preview 
+
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'anyakichi/vim-surround'  " Change the surround of word, text etc. Use cs([
 
 Plug 'easymotion/vim-easymotion'  " For easy motion in vim, search in screen
 Plug 'scrooloose/nerdtree'        " For easy tree file navigation
+Plug 'Xuyuanp/nerdtree-git-plugin' " Show color file in the tree navigation
 Plug 'christoomey/vim-tmux-navigator' " For easy navigator between tree and editor
 
 call plug#end()
@@ -114,14 +123,26 @@ call plug#end()
 " colorscheme murphy
 " colorscheme torte
 colorscheme gruvbox
-let g:gruvbox_statusbar_font_size_16='16'
-let g:gruvbox_buttons_font_size_16='16'
-let g:gruvbox_buttons_font_size='16'
 
-let g:coc_global_extensions = [ 'coc-tsserver' ]
+" For load prettier
+" command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+let g:coc_global_extensions = [ 
+      \ 'coc-snippets',
+      \ 'coc-pairs',
+      \ 'coc-tsserver',
+      \ 'coc-eslint',
+      \ 'coc-json',
+      \ ]
 
 " nerdtree configuration for close tree afther select file
 let NERDTreeQuitOnOpen=1
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" ctrlp     this is for ignore the files that git ignore.
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
