@@ -84,8 +84,12 @@ let mapleader = " "
 noremap <leader>w :w <cr>
 noremap <leader>q :q<cr>
 noremap <leader>wq :wq<cr>
+noremap <leader>t :term<cr>
+noremap <leader>tb :below term<cr>
 noremap <leader>gs :CocSearch
 noremap <leader>fs :Files<cr>
+" Managing buffers
+noremap <leader>ls :ls<cr>:b
 " For search in the same file
 nmap <leader>s <Plug>(easymotion-s2)
 " For file tree, use m for menu option on the tree
