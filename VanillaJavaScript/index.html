@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-with, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie-edge" />
+    <title>App Vanilla JavaScrit</title>
+    <!-- CDN Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/superhero/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <!-- NAVIGATION -->
+    <nav class="navbar navbar-light bg-light">
+      <a href="/" class="navbar-brand">
+        App Vanilla JavaScrit
+      </a>
+      <img
+        src="https://www.gravatar.com/avatar/dd43ba3e67fd9efdb57c9b60b16c4306.jpg?s=80"
+        class="rounded-circle"
+      />
+    </nav>
+
+    <div class="container">
+      <!-- APLICATION BODY -->
+      <div id="App" class="row pt-5">
+        <div class"col-md-4">
+
+        <div class="card">
+          <div class="card-header">
+            <h4>New Service</h4>
+          </div>
+          <div class="card-body">
+            <form id="service-form">
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="service-name"
+                  placeholder="Enter Service name"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="number"
+                  id="service-price"
+                  placeholder="0"
+                  class="form-control"
+                  step="0.01"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="number"
+                  id="service-year"
+                  placeholder="Year of service"
+                  class="form-control"
+                  value="2019"
+                  min="1960"
+                  max="3000"
+                />
+              </div>
+              <input
+                type="submit"
+                value="save"
+                class="btn btn-primary btn-block"
+              />
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div id="services-list"></div>
+      </div>
+    </div>
+    <script src="./App.js"></script>
+  </body>
+</html>
