@@ -1,4 +1,4 @@
-" Set compatibility to Vim only.
+"Set compatibility to Vim only.
 set nocompatible
 set nolist
 " show relative numbers
@@ -90,8 +90,6 @@ noremap <leader>gs :CocSearch
 noremap <leader>fs :Files<cr>
 " Managing buffers
 noremap <leader>ls :ls<cr>:b
-" For search in the same file
-nmap <leader>s <Plug>(easymotion-s2)
 " For file tree, use m for menu option on the tree
 nmap <leader>nt :NERDTreeFind<cr>
 "For run Prettier, formating code
@@ -104,6 +102,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'     " Theme
+Plug 'vim-airline/vim-airline'
 
 " IDE
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " For search files
@@ -117,12 +116,13 @@ Plug 'ap/vim-css-color'    " For color preview
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'anyakichi/vim-surround'  " Change the surround of word, text etc. Use cs([
 
-Plug 'easymotion/vim-easymotion'  " For easy motion in vim, search in screen
 Plug 'scrooloose/nerdtree'        " For easy tree file navigation
-Plug 'Xuyuanp/nerdtree-git-plugin' " Show color file in the tree navigation
 Plug 'christoomey/vim-tmux-navigator' " For easy navigator between tree and editor
+Plug 'Xuyuanp/nerdtree-git-plugin' " Show color file in the tree navigation
 
 call plug#end()
+
+let g:gruvbox_contrast_dark='hard'
 " colorscheme darkblue
 " colorscheme murphy
 " colorscheme torte
