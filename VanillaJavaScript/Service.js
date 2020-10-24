@@ -64,6 +64,7 @@ document
     const newService = new Service(serviceName, servicePrice, serviceYear);
 
     const ui = new UI();
+    e.preventDefault();
     if (serviceName === "" || servicePrice === "" || serviceYear === "") {
       return ui.showMessage("Fill data service.", "danger"); 
     }
@@ -71,7 +72,6 @@ document
     ui.resetForm();
     ui.showMessage("Service added success.", "success");
 
-    e.preventDefault();
   });
 
 document

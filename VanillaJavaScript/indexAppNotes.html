@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-with, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie-edge" />
+    <title>Test Note App</title>
+    <!-- CDN Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/superhero/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <!-- NAVIGATION -->
+    <nav class="navbar navbar-light bg-light">
+      <a href="/" class="navbar-brand">
+        App Notes Manuel Gallego
+      </a>
+      <img
+        src="https://www.gravatar.com/avatar/dd43ba3e67fd9efdb57c9b60b16c4306.jpg?s=80"
+        class="rounded-circle"
+      />
+    </nav>
+
+    <div class="container">
+      <!-- APLICATION BODY -->
+      <div id="App" class="row pt-5">
+        <div class"col-md-4">
+
+        <div class="card">
+          <div class="card-header">
+            <h4>New Note</h4>
+          </div>
+          <div class="card-body">
+            <form id="note-form">
+              <div class="form-group">
+                <textarea
+                  id="note-content"
+                  placeholder="Enter your note"
+                  class="form-control rw-md-5"
+                >
+                </textarea>
+              </div>
+              <div class="form-group">
+                <select
+                  id="note-color"
+                  placeholder="Enter your note"
+                  class="form-control rw-md-5">
+                  <option value="bg-primary">Orange</option>
+                  <option value="bg-secondary">Blue</option>
+                  <option value="bg-warning">Yellow</option>
+                  <option value="bg-light">Withe</option>
+                </select>
+              </div>
+              <input
+                type="submit"
+                value="save note"
+                class="btn btn-primary btn-block"
+              />
+              </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div id="note-list"></div>
+      </div>
+    </div>
+    <script src="./Note.js"></script>
+  </body>
+</html>
