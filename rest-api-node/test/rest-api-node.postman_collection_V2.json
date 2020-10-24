@@ -1,0 +1,84 @@
+{
+	"variables": [],
+	"info": {
+		"name": "rest-api-node",
+		"_postman_id": "74e3a1b9-696b-ab94-f762-caf2a2f11866",
+		"description": "This request is for test the rest api made with node jse",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Basic Reques for users",
+			"request": {
+				"url": "http://localhost:3000/users",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Basic request"
+			},
+			"response": []
+		},
+		{
+			"name": "New User",
+			"request": {
+				"url": "http://localhost:3000/users",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstName\" : \"Manuel\",\n\t\"lastName\" : \"Arias\",\n\t\"email\" : \"mgallegoarias@gmail.com\"\n}"
+				},
+				"description": "Create a new user, car param is optional"
+			},
+			"response": []
+		},
+		{
+			"name": "Find a User",
+			"request": {
+				"url": "http://localhost:3000/users/5f800c17d531591cd4978584",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Search a specifict user Id"
+			},
+			"response": []
+		},
+		{
+			"name": "Replace User",
+			"request": {
+				"url": "http://localhost:3000/users/5f800c17d531591cd4978584",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstName\" : \"Manuel2\",\n\t\"lastName\" : \"Arias\",\n\t\"email\" : \"mgallegoarias@gmail.com\"\n}"
+				},
+				"description": "Use the put method to replace the user data"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"url": "http://localhost:3000/users/5f80108dc4b15f1858e5c3d8",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": "Delete user by Id"
+			},
+			"response": []
+		}
+	]
+}
