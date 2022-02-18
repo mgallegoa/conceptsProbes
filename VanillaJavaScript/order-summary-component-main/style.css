@@ -35,17 +35,17 @@ body {
     max-width: 450px;
     padding: 30px 0px;
 }
-.card__body-title {
+.card__title {
     font-size: 25px;
     margin: 0px;
 }
-.card__body-subtitle {
+.card__subtitle {
     font-size: 16px;
     font-weight: lighter;
     padding: 4px 50px;
     color: hsl(224, 23%, 55%);
 }
-.card__body-grid{
+.card__grid{
     background-color: hsl(225, 100%, 98%);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -53,31 +53,31 @@ body {
     margin-right: 40px;
     border-radius: 10px;
 }
-.card__body-grid-icon {
+.card__grid-icon {
     align-self: center;
 }
-.card__body-grid-description {
+.card__grid-description {
     align-self: center;
 }
-.card__body-grid-plan {
+.card__grid-plan {
     font-weight: 600;
     margin-top: 21px;
     margin-bottom: 5px;
 }
-.card__body-grid-price {
+.card__grid-price {
     font-weight: 100;
     margin-top: 5px;
     margin-bottom: 21px;
     color: hsl(224, 23%, 55%);
 }
-.card__body-grid-link {    
+.card__grid-link {    
     align-self: center;
 }
 a:hover {
     color: hsl(245, 75%, 52%);
     text-decoration: none;
 }
-.card__body-button {
+.card__button {
     background-color: hsl(245, 75%, 52%);
     color: hsl(225, 100%, 98%);
     margin-top: 25px;
@@ -92,15 +92,15 @@ input:hover {
     text-decoration: none;
     cursor: pointer;
 }
-.card__body-cancel-order {
+.card__cancel-order {
     font-size: 10px;
     margin-top: 32px;
 }
-.card__body-cancel-order-link {
+.card__cancel-order-link {
     color: hsl(224, 23%, 55%);
     text-decoration: none;
 }
-.card__body-cancel-order-link:hover {
+.card__cancel-order-link:hover {
     font-weight: 600;
     color: black;
     cursor: pointer;
