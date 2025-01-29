@@ -55,6 +55,27 @@ const piece = {
   ],
 };
 
+const PIECES = [
+  [
+    [1, 1],
+    [1, 1],
+  ],
+  [[1, 1, 1, 1]],
+  [
+    [0, 1, 0],
+    [1, 1, 1],
+  ],
+  [
+    [1, 1, 0],
+    [0, 1, 1],
+  ],
+  [
+    [1, 0],
+    [1, 0],
+    [1, 1],
+  ],
+];
+
 // 2. Game loop
 // function update() {
 //   draw();
@@ -140,16 +161,26 @@ function checkCollision() {
 }
 
 function solidifyPiece() {
-  piece.shape.forEach((row, x) => {
-    row.forEach((value, y) => {
+  piece.shape.forEach((row, y) => {
+    row.forEach((value, x) => {
       if (value === 1) {
         board[y + piece.position.y][x + piece.position.x] = 1;
       }
     });
   });
 
-  piece.position.x = 6;
+  // Reset position
+  piece.position.x = Math.floor(BOARD_WIDTH / 2 - 2);
   piece.position.y = 0;
+  // Random peace
+  piece.shape = PIECES[Math.floor(Math.random() * PIECES.length)];
+  // Game over
+  if (checkCollision()) {
+    window.alert("Game Over!! Sorry!");
+    board.forEach((row) => {
+      row.fill(0);
+    });
+  }
 }
 
 function removeRows() {
