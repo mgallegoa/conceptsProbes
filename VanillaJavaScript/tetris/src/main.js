@@ -56,10 +56,29 @@ const piece = {
 };
 
 // 2. Game loop
-function update() {
+// function update() {
+//   draw();
+//   window.requestAnimationFrame(update);
+// }
+
+let dropCounter = 0;
+let lastTime = 0;
+
+function update(time = 0) {
+  const deltaTime = time - lastTime;
+  lastTime = time;
+
+  dropCounter += deltaTime;
+
+  if (dropCounter > 1000) {
+    moveDown();
+    dropCounter = 0;
+  }
+
   draw();
   window.requestAnimationFrame(update);
 }
+
 function draw() {
   context.fillStyle = "#000";
   context.fillRect(0, 0, canvas.width, canvas.height);
@@ -97,14 +116,18 @@ document.addEventListener("keydown", (e) => {
     }
   }
   if (e.key === "ArrowDown") {
-    piece.position.y++;
-    if (checkCollision()) {
-      piece.position.y--;
-      solidifyPiece();
-      removeRows();
-    }
+    moveDown();
   }
 });
+
+function moveDown() {
+  piece.position.y++;
+  if (checkCollision()) {
+    piece.position.y--;
+    solidifyPiece();
+    removeRows();
+  }
+}
 
 function checkCollision() {
   return piece.shape.find((row, y) => {
