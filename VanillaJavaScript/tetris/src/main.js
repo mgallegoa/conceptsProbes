@@ -210,7 +210,7 @@ const $start = document.querySelector("[data-jsstart]");
 $start.addEventListener("click", () => {
   update();
   $start.remove();
-  const audio = new Audio("../public/tetris-korobeiniki.mp3");
+  const audio = new Audio("./tetris-korobeiniki.mp3");
   audio.volume = 0.5;
   audio.play();
 });
