@@ -46,15 +46,6 @@ const board = [
   [1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0],
 ];
 
-// 4. Piece player
-const piece = {
-  position: { x: 5, y: 5 },
-  shape: [
-    [1, 1],
-    [1, 1],
-  ],
-};
-
 const PIECES = [
   [
     [1, 1],
@@ -75,6 +66,12 @@ const PIECES = [
     [1, 1],
   ],
 ];
+
+// 4. Piece player
+const piece = {
+  position: { x: 5, y: 5 },
+  shape: PIECES[Math.floor(Math.random() * PIECES.length)],
+};
 
 // 2. Game loop
 // function update() {
@@ -138,6 +135,23 @@ document.addEventListener("keydown", (e) => {
   }
   if (e.key === "ArrowDown") {
     moveDown();
+  }
+  if (e.key === "ArrowUp") {
+    const rotated = [];
+
+    for (let i = 0; i < piece.shape[0].length; i++) {
+      const row = [];
+      for (let j = piece.shape.length - 1; j >= 0; j--) {
+        row.push(piece.shape[j][i]);
+      }
+      rotated.push(row);
+    }
+
+    const previousShape = piece.shape;
+    piece.shape = rotated;
+    if (checkCollision()) {
+      piece.shape = previousShape;
+    }
   }
 });
 
