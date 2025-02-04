@@ -5,7 +5,7 @@ const mocksTodo = [
   {
     id: "1",
     title: "todo 1",
-    completed: false,
+    completed: true,
   },
   {
     id: "2",
@@ -19,11 +19,16 @@ const mocksTodo = [
   },
 ];
 const App = () => {
-  const [todos] = useState(mocksTodo);
+  const [todos, setTodos] = useState(mocksTodo);
+  const handleRemove = (id: string) => {
+    const newTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(newTodos);
+  };
   return (
     <>
-      <h1>Vite + React</h1>
-      <Todos todos={todos} />
+      <div className="todoapp">
+        <Todos onRemoveTodo={handleRemove} todos={todos} />
+      </div>
     </>
   );
 };
