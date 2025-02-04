@@ -1,12 +1,17 @@
-import { todoId, type ListOfTodos } from "../types";
+import { Todo as TodoType, todoId, type ListOfTodos } from "../types";
 import { Todo } from "./Todo";
 
 interface Props {
   todos: ListOfTodos;
   onRemoveTodo: ({ id }: todoId) => void;
+  onCompleted: ({ id, completed }: Pick<TodoType, "id" | "completed">) => void;
 }
 
-export const Todos: React.FC<Props> = ({ todos, onRemoveTodo }) => {
+export const Todos: React.FC<Props> = ({
+  todos,
+  onRemoveTodo,
+  onCompleted,
+}) => {
   return (
     <ul className="todo-list">
       {todos.map((todo) => (
@@ -17,6 +22,7 @@ export const Todos: React.FC<Props> = ({ todos, onRemoveTodo }) => {
             id={todo.id}
             completed={todo.completed}
             onRemoveTodo={onRemoveTodo}
+            onCompleted={onCompleted}
           />
         </li>
       ))}
