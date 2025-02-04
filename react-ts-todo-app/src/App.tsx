@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Todos } from "./components/Todos";
+import { todoId } from "./types";
 
 const mocksTodo = [
   {
@@ -20,7 +21,7 @@ const mocksTodo = [
 ];
 const App = () => {
   const [todos, setTodos] = useState(mocksTodo);
-  const handleRemove = (id: string) => {
+  const handleRemove = ({ id }: todoId) => {
     const newTodos = todos.filter((todo) => todo.id !== id);
     setTodos(newTodos);
   };
