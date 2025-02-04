@@ -49,6 +49,10 @@ const App = () => {
   const handleFilterChange = (filter: FilterValue): void => {
     setFilterSelected(filter);
   };
+  const handleRemoveAllCompleted = () => {
+    const newTodos = todos.filter((todo) => !todo.completed);
+    setTodos(newTodos);
+  };
 
   const filterTodos = todos.filter((todo) => {
     if (filterSelected === TODO_FILTERS.ACTIVE) return !todo.completed;
@@ -72,7 +76,7 @@ const App = () => {
           completedCount={completedCount}
           filterSelected={filterSelected}
           handlerFilterChange={handleFilterChange}
-          onClearCompleted={() => {}}
+          onClearCompleted={handleRemoveAllCompleted}
         />
       </div>
     </>
