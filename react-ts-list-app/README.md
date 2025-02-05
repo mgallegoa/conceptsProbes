@@ -1,10 +1,14 @@
-# React + TypeScript + Vite
+### React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 For testing using vistest (alternative to jest) , happy-dom (to emulate the browser)
 
 To render react components, use Testing Library React,
+
+For End to End testing add the library @testing-library/user-event
+
+## Vite documentation
 
 Currently, two official plugins are available:
 

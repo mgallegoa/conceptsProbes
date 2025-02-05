@@ -9,21 +9,8 @@ interface Item {
   text: string;
 }
 
-const INITIAL_ITEMS: Array<Item> = [
-  {
-    id: crypto.randomUUID(),
-    timestamp: Date.now(),
-    text: "Item 1",
-  },
-  {
-    id: crypto.randomUUID(),
-    timestamp: Date.now(),
-    text: "Item 2",
-  },
-];
-
 function App() {
-  const [items, setItems] = useState(INITIAL_ITEMS);
+  const [items, setItems] = useState<Item[]>([]);
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const { elements } = event.currentTarget;
@@ -55,7 +42,7 @@ function App() {
     <main>
       <aside>
         <h1>Add Element to a list app</h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} aria-label="Add and remove Items">
           <label>
             Element to add:
             <input
