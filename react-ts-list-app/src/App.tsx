@@ -1,8 +1,10 @@
 import { useState } from "react";
 import "./App.css";
 
+type ItemId = `${string}-${string}-${string}-${string}-${string}`;
+
 interface Item {
-  id: `${string}-${string}-${string}-${string}-${string}`;
+  id: ItemId;
   timestamp: number;
   text: string;
 }
@@ -42,6 +44,13 @@ function App() {
     });
     input.value = "";
   };
+
+  const handleRemoveItem = (id: ItemId) => () => {
+    setItems((prevElements) => {
+      return prevElements.filter((currentItem) => currentItem.id !== id);
+    });
+  };
+
   return (
     <main>
       <aside>
@@ -60,24 +69,29 @@ function App() {
         </form>
       </aside>
       <section>
-        <ul>
-          {items.map((item) => (
-            <li key={item.id}>
-              {item.text}
-              <button
-                onClick={() => {
-                  setItems((prevElements) => {
-                    return prevElements.filter(
-                      (currentItem) => currentItem.id !== item.id,
-                    );
-                  });
-                }}
-              >
-                x
-              </button>
-            </li>
-          ))}
-        </ul>
+        {items.length === 0 ? (
+          <strong>There are not elements</strong>
+        ) : (
+          <ul>
+            {items.map((item) => (
+              <li key={item.id}>
+                {item.text}
+                <button
+                  onClick={handleRemoveItem(item.id)}
+                  // onClick={() => {
+                  //   setItems((prevElements) => {
+                  //     return prevElements.filter(
+                  //       (currentItem) => currentItem.id !== item.id,
+                  //     );
+                  //   });
+                  // }}
+                >
+                  x
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
       </section>
     </main>
   );
