@@ -8,6 +8,10 @@ To render react components, use Testing Library React,
 
 For End to End testing add the library @testing-library/user-event
 
+Custom Hook for manage the Item state
+
+Create a hook to add SEO to the page
+
 ## Vite documentation
 
 Currently, two official plugins are available:
