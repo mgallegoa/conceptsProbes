@@ -2,5 +2,32 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
+  width: 100%;
+}
+h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 450px 1fr;
+  gap: 64px;
+}
+
+form {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+label {
+  font-size: 0.8rem;
+}
+
+input {
+  border-radius: 4px;
+  cursor: default;
+  margin-left: 0.3rem;
 }
