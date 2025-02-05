@@ -1,16 +1,17 @@
-import { useState } from "react";
 import "./App.css";
+import { Item } from "./components/Item";
+import { useItems } from "./hooks/useItems";
 
-type ItemId = `${string}-${string}-${string}-${string}-${string}`;
+export type ItemId = `${string}-${string}-${string}-${string}-${string}`;
 
-interface Item {
+export interface Item {
   id: ItemId;
   timestamp: number;
   text: string;
 }
 
 function App() {
-  const [items, setItems] = useState<Item[]>([]);
+  const { items, addItem, removeItem } = useItems();
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const { elements } = event.currentTarget;
@@ -21,23 +22,12 @@ function App() {
     const input = elements.namedItem("item");
     const isInput = input instanceof HTMLInputElement;
     if (!isInput || isInput == null) return;
-    const newItem: Item = {
-      id: crypto.randomUUID(),
-      timestamp: Date.now(),
-      text: input.value,
-    };
-    setItems((prevItems) => {
-      return [...prevItems, newItem];
-    });
+    addItem(input.value);
     input.value = "";
   };
-
   const handleRemoveItem = (id: ItemId) => () => {
-    setItems((prevElements) => {
-      return prevElements.filter((currentItem) => currentItem.id !== id);
-    });
+    removeItem(id);
   };
-
   return (
     <main>
       <aside>
@@ -61,21 +51,11 @@ function App() {
         ) : (
           <ul>
             {items.map((item) => (
-              <li key={item.id}>
-                {item.text}
-                <button
-                  onClick={handleRemoveItem(item.id)}
-                  // onClick={() => {
-                  //   setItems((prevElements) => {
-                  //     return prevElements.filter(
-                  //       (currentItem) => currentItem.id !== item.id,
-                  //     );
-                  //   });
-                  // }}
-                >
-                  x
-                </button>
-              </li>
+              <Item
+                {...item}
+                handleClick={handleRemoveItem(item.id)}
+                key={item.id}
+              />
             ))}
           </ul>
         )}
