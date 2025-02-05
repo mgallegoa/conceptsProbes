@@ -62,7 +62,20 @@ function App() {
       <section>
         <ul>
           {items.map((item) => (
-            <li key={item.id}>{item.text}</li>
+            <li key={item.id}>
+              {item.text}
+              <button
+                onClick={() => {
+                  setItems((prevElements) => {
+                    return prevElements.filter(
+                      (currentItem) => currentItem.id !== item.id,
+                    );
+                  });
+                }}
+              >
+                x
+              </button>
+            </li>
           ))}
         </ul>
       </section>
