@@ -22,8 +22,8 @@ Create a hook to add SEO to the page
 
 Use the Dockerfile, this app run in the internal port 5174, use:
 
-1. docker build -t manuelarias/react-ts-list:v2 .
-2. docker run -dp 5173:5173 --name react-ts-list-app manuelarias/react-ts-list:v2
+1. docker build -t manuelarias/react-ts-list:v1 .
+2. docker run -dp 5555:5174 --name react-ts-list-app manuelarias/react-ts-list:v1
 3. docker exec -it react-ts-list-app bash
 
 ## Vite documentation
