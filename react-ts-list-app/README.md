@@ -2,15 +2,29 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
+## TESTING
+
 For testing using vistest (alternative to jest) , happy-dom (to emulate the browser)
 
 To render react components, use Testing Library React,
 
 For End to End testing add the library @testing-library/user-event
 
+## CUSTOM HOOK
+
 Custom Hook for manage the Item state
 
+## SEO
+
 Create a hook to add SEO to the page
+
+## DOCKER
+
+Use the Dockerfile, this app run in the internal port 5174, use:
+
+1. docker build -t manuelarias/react-ts-list:v2 .
+2. docker run -dp 5173:5173 --name react-ts-list-app manuelarias/react-ts-list:v2
+3. docker exec -it react-ts-list-app bash
 
 ## Vite documentation
 
