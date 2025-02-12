@@ -8,7 +8,7 @@ RUN npm install -g pnpm@latest-10 && pnpm install
 # Copy the application
 COPY . .
 
-EXPOSE 5173
+# EXPOSE 5174
 
 # This app run in the internal port 5174, go to README.md
 CMD ["pnpm", "run", "dev"]
