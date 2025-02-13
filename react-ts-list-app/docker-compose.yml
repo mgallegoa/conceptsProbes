@@ -14,11 +14,19 @@ services:
     environment:
       - NOD_ENV=development
 
-  #Production frontend service
-  prod-react-ts-list-app:
+  #Production Build frontend service
+  prod-build-react-ts-list-app:
     build:
       context: .
       dockerfile: Dockerfile.prod
+    ports:
+      - "8080:80"
+    environment:
+      - NOD_ENV=production
+
+  #Production Run from image frontend service
+  prod-run-react-ts-list-app:
+    image: manuelarias/react-ts-list:v2
     ports:
       - "8080:80"
     environment:

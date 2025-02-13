@@ -29,7 +29,8 @@ Use the Dockerfile, this app run in the internal port 5174, use:
 ## DOCKER - Compose
 
 - Development service: docker-compose up -d dev-react-ts-list-app
-- Production service: docker-compose up -d prod-react-ts-list-app --build
+- Production build service: docker-compose up -d prod-build-react-ts-list-app --build
+- Production run service: docker-compose up prod-run-react-ts-list-app
 
 ## Vite documentation
 
