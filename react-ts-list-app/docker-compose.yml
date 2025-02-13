@@ -1,0 +1,25 @@
+services:
+  #Development frontend service
+  dev-react-ts-list-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./src:/app/react-ts-list-app/src
+      - ./dist:/app/react-ts-list-app/dist
+      - ./package.json:/app/react-ts-list-app/package.json
+      - /app/react-ts-list-app/node_modules
+    ports:
+      - "5555:5174"
+    environment:
+      - NOD_ENV=development
+
+  #Production frontend service
+  prod-react-ts-list-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    ports:
+      - "8080:80"
+    environment:
+      - NOD_ENV=production

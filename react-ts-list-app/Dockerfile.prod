@@ -1,0 +1,22 @@
+# Build stage
+FROM node:22.13-alpine3.21 AS build_image
+
+WORKDIR /app/react-ts-list-app
+
+COPY package.json ./
+RUN npm install -g pnpm@latest-10 && pnpm install
+
+# Copy the application
+COPY . .
+
+RUN pnpm run build
+
+
+# Multi-stage build
+FROM nginx:alpine AS production_image
+
+COPY --from=build_image /app/react-ts-list-app/dist /usr/share/nginx/html
+
+CMD ["nginx", "-g", "daemon off;"]
+
+
