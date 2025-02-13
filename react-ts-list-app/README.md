@@ -26,6 +26,11 @@ Use the Dockerfile, this app run in the internal port 5174, use:
 2. docker run -dp 5555:5174 --name react-ts-list-app -v /media/manuel/Datos/mgallegoa/conceptsProbes/react-ts-list-app/src:/app/react-ts-list-app/src manuelarias/react-ts-list:v1
 3. docker exec -it react-ts-list-app bash
 
+## DOCKER - Compose
+
+- Development service: docker-compose up -d dev-react-ts-list-app
+- Production service: docker-compose up -d prod-react-ts-list-app --build
+
 ## Vite documentation
 
 Currently, two official plugins are available:
