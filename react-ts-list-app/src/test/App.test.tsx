@@ -53,16 +53,16 @@ describe("<App />", () => {
     // Test delete the element
     const item = screen.getByText(randomText);
     expect(item).toBeDefined();
-    const removeButton = item.querySelector("button");
-    expect(removeButton).toBeDefined();
+    const removeButton = item.parentElement?.querySelector("button");
 
+    expect(removeButton).toBeDefined();
     await user.click(removeButton!);
     expect(list.childNodes.length).toBe(1);
 
     // Test delete the last element
     const item2 = screen.getByText(customText);
     expect(item2).toBeDefined();
-    const removeButton2 = item2.querySelector("button");
+    const removeButton2 = item2.parentElement?.querySelector("button");
     expect(removeButton2).toBeDefined();
 
     await user.click(removeButton2!);
