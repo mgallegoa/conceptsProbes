@@ -36,6 +36,8 @@ Use the Dockerfile, this app run in the internal port 5174, use:
 - Production build service: docker-compose up -d prod-build-react-ts-list-app --build
 - Production run service: docker-compose up -d prod-run-react-ts-list-app
 
+Note: use --build if previously exist the image, otherwise (the image don't exist) the parameter is not required
+
 ## HTTP and HTTPS
 
 To view working correctly, it is necessary to run over HTTPS secure protocol.
