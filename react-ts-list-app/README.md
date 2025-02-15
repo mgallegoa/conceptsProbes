@@ -30,7 +30,39 @@ Use the Dockerfile, this app run in the internal port 5174, use:
 
 - Development service: docker-compose up -d dev-react-ts-list-app
 - Production build service: docker-compose up -d prod-build-react-ts-list-app --build
-- Production run service: docker-compose up prod-run-react-ts-list-app
+- Production run service: docker-compose up -d prod-run-react-ts-list-app
+
+## HTTP and HTTPS
+
+To view working correctly, it is necessary to run over HTTPS secure protocol.
+
+This is necessary for the crypto.randomUUID() method, the method is accessible for the browser only in https session.
+
+For testing in a Play With Docker page or Oracle Cloud, you can use cloudflare (WARP).
+
+# Run in Play With Docker PWD:
+
+docker run -dp 8080:80 --name react-ts-list-app manuelarias/react-ts-list:v2
+
+# Instructions to install WARP (cloudfare CLI) in an Alpine Linux server (Play With Docker use it):
+
+1. Download the Binary:
+   wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -O /usr/local/bin/cloudflared
+2. Set Execute Permissions:
+   chmod +x /usr/local/bin/cloudflared
+3. Verify Installation:
+   cloudflared -v
+4. Create the Cloudflared tunel:
+   cloudflared tunnel --url http://localhost:8080
+   (This give a page similar to https://lauren-tones-incorrect-sonic.trycloudflare.com/)
+
+# Instructions to install Oracle Command Infrastructure CLI in a machine running Alpine Linux:
+
+1. Ensure your /etc/apk/repositories file includes the community repository. Add the following line if it's missing:
+   http://dl-cdn.alpinelinux.org/alpine/v3.20/community
+2. apk update
+3. apk add oci-cli
+4. oci -v
 
 ## Vite documentation
 
