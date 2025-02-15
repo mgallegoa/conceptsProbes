@@ -19,7 +19,7 @@ export const Item = ({
         //   });
         // }}
       >
-        x
+        X
       </button>
     </li>
   );

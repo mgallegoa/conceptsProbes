@@ -34,38 +34,54 @@ function App() {
     removeItem(id);
   };
   return (
-    <main>
-      <aside>
-        <h1>Add Element to a list app</h1>
-        <form onSubmit={handleSubmit} aria-label="Add and remove Items">
-          <label>
-            Element to add:
-            <input
-              name="item"
-              required
-              type="text"
-              placeholder="Write item to add"
-            />
-          </label>
-          <button type="submit">Add Item</button>
-        </form>
-      </aside>
-      <section>
-        {items.length === 0 ? (
-          <strong className="list__empty">There are not elements</strong>
-        ) : (
-          <ul>
-            {items.map((item) => (
-              <Item
-                {...item}
-                handleClick={handleRemoveItem(item.id)}
-                key={item.id}
+    <>
+      <header>
+        <nav className="navbar navbar-light bg-light">
+          <a
+            href="https://github.com/mgallegoa/conceptsProbes/blob/master/react-ts-list-app/README.md"
+            className="navbar-brand"
+          >
+            Go to documentation
+          </a>
+          <img
+            src="https://www.gravatar.com/avatar/dd43ba3e67fd9efdb57c9b60b16c4306.jpg?s=80"
+            className="rounded-circle"
+          />
+        </nav>
+      </header>
+      <main>
+        <aside>
+          <h1>Add Element to a list app</h1>
+          <form onSubmit={handleSubmit} aria-label="Add and remove Items">
+            <label>
+              Element to add:
+              <input
+                name="item"
+                required
+                type="text"
+                placeholder="Write item to add"
               />
-            ))}
-          </ul>
-        )}
-      </section>
-    </main>
+            </label>
+            <button type="submit">Add Item</button>
+          </form>
+        </aside>
+        <section>
+          {items.length === 0 ? (
+            <strong className="list__empty">There are not elements</strong>
+          ) : (
+            <ul>
+              {items.map((item) => (
+                <Item
+                  {...item}
+                  handleClick={handleRemoveItem(item.id)}
+                  key={item.id}
+                />
+              ))}
+            </ul>
+          )}
+        </section>
+      </main>
+    </>
   );
 }
 
