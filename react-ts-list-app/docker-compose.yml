@@ -27,6 +27,7 @@ services:
   #Production Run from image frontend service
   prod-run-react-ts-list-app:
     image: manuelarias/react-ts-list:v2
+    container_name: prod-run-react-ts-list-app
     ports:
       - "8080:80"
     environment:
