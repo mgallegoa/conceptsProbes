@@ -52,7 +52,7 @@ function App() {
       </aside>
       <section>
         {items.length === 0 ? (
-          <strong>There are not elements</strong>
+          <strong className="list__empty">There are not elements</strong>
         ) : (
           <ul>
             {items.map((item) => (

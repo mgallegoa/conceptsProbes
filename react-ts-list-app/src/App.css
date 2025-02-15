@@ -7,12 +7,13 @@
 h1 {
   font-size: 2rem;
   margin: 0;
+  text-align: center;
 }
 
 main {
   display: grid;
-  grid-template-columns: 450px 1fr;
-  gap: 64px;
+  grid-template-columns: 1fr;
+  gap: 14px;
 }
 
 form {
@@ -30,4 +31,43 @@ input {
   border-radius: 4px;
   cursor: default;
   margin-left: 0.3rem;
+}
+
+section {
+  display: grid;
+}
+ul {
+  padding-inline-start: 1rem;
+  margin-inline-end: 0.5rem;
+}
+li {
+  padding: 0.2rem 0;
+  min-width: 100%;
+  text-decoration-line: underline;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  white-space: wrap;
+  align-items: baseline;
+}
+.list__text {
+  margin: 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.list__empty {
+  align-items: center;
+  font-size: 1.3rem;
+  text-align: center;
+  color: #cf3939;
+}
+.button__delete {
+  padding: 0.5rem 1rem;
+  background-color: #cf3939;
+
+  margin-left: auto;
+}
+@media (min-width: 650px) {
+  main {
+    grid-template-columns: 450px 1fr;
+  }
 }

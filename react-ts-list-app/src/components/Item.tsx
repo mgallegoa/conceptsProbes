@@ -7,8 +7,9 @@ export const Item = ({
 }) => {
   return (
     <li>
-      {text}
+      <p className="list__text">{text}</p>
       <button
+        className="button__delete"
         onClick={handleClick}
         // onClick={() => {
         //   setItems((prevElements) => {
