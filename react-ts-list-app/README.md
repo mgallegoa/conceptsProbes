@@ -1,6 +1,10 @@
-### React + TypeScript + Vite
+## React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Generate with a vite template for a minimal setup to get React.
+
+This app add items to a list.
+
+Create with Typescript and testing with vitest
 
 ## TESTING
 
