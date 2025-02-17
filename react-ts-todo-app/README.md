@@ -1,11 +1,18 @@
-### React + TypeScript
+# React + TypeScript -> Todo App
+
+               ███╗░░░███╗░█████╗░███╗░░██╗██╗░░░██╗███████╗██╗░░░░░
+               ████╗░████║██╔══██╗████╗░██║██║░░░██║██╔════╝██║░░░░░
+               ██╔████╔██║███████║██╔██╗██║██║░░░██║█████╗░░██║░░░░░
+               ██║╚██╔╝██║██╔══██║██║╚████║██║░░░██║██╔══╝░░██║░░░░░
+               ██║░╚═╝░██║██║░░██║██║░╚███║╚██████╔╝███████╗███████╗
+               ╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝░╚═════╝░╚══════╝╚══════╝
 
 Easy project to play with React + Typescript (Use uncontrolled input).
 
     - pnpm install
     - pnpm run dev
 
-# React + TypeScript + Vite
+## React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 

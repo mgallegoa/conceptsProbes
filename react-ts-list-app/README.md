@@ -1,10 +1,28 @@
-## React + TypeScript + Vite
+# React + TypeScript + Vite - List App
+
+               ███╗░░░███╗░█████╗░███╗░░██╗██╗░░░██╗███████╗██╗░░░░░
+               ████╗░████║██╔══██╗████╗░██║██║░░░██║██╔════╝██║░░░░░
+               ██╔████╔██║███████║██╔██╗██║██║░░░██║█████╗░░██║░░░░░
+               ██║╚██╔╝██║██╔══██║██║╚████║██║░░░██║██╔══╝░░██║░░░░░
+               ██║░╚═╝░██║██║░░██║██║░╚███║╚██████╔╝███████╗███████╗
+               ╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝░╚═════╝░╚══════╝╚══════╝
+
+## Description
 
 Generate with a vite template for a minimal setup to get React.
 
 This app add items to a list.
 
-Create with Typescript and testing with vitest
+Create with React and Typescript and testing with vitest
+
+To run the project in local:
+
+- pnpm install
+- pnpm run dev
+
+Go to the url: http//localhost:5174/
+
+To run the project in docker [Read this section](#DOCKER)
 
 ## TESTING
 
