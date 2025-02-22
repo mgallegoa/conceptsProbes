@@ -2,6 +2,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 This easy project is for test the ways to create components in react.
 
+# > [!WARNING]
+> This project run with eslint V8, not upgrade the eslint because incompatibility with webpack
+
 ## Available Scripts
 
 In the project directory, you can run:
