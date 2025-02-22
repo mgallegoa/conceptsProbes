@@ -1,3 +1,14 @@
+# React class vs functions Components
+
+               ███╗░░░███╗░█████╗░███╗░░██╗██╗░░░██╗███████╗██╗░░░░░
+               ████╗░████║██╔══██╗████╗░██║██║░░░██║██╔════╝██║░░░░░
+               ██╔████╔██║███████║██╔██╗██║██║░░░██║█████╗░░██║░░░░░
+               ██║╚██╔╝██║██╔══██║██║╚████║██║░░░██║██╔══╝░░██║░░░░░
+               ██║░╚═╝░██║██║░░██║██║░╚███║╚██████╔╝███████╗███████╗
+               ╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝░╚═════╝░╚══════╝╚══════╝
+
+## Project - Description
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 This easy project is for test the ways to create components in react.
