@@ -1,15 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
+import PropTypes from "prop-types";
 import './App.css';
-
-function UseOfProps(props) {
+function UseOfProps ({title, text}) {
    return (
      <div id="divUseOfProps">
-       <h2>{props.title}</h2>
-       <h4>{props.text}</h4>
+       <h2>{title}</h2>
+       <h4>{text}</h4>
      </div>
   )
-}
+};
+
 
 class ClassComponent extends React.Component {
   state = {
@@ -29,6 +30,18 @@ class ClassComponent extends React.Component {
     }
   }
 }
+
+UseOfProps.propTypes = {
+  title: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired
+}
+
+ClassComponent.propTypes = {
+ title: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired
+
+}
+
 
 function App() {
   return (
