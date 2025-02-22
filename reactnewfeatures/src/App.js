@@ -2,7 +2,7 @@ import React from 'react';
 // import logo from './logo.svg';
 import PropTypes from "prop-types";
 import './App.css';
-function UseOfProps ({title, text}) {
+export function UseOfProps ({title, text}) {
    return (
      <div id="divUseOfProps">
        <h2>{title}</h2>
@@ -12,7 +12,7 @@ function UseOfProps ({title, text}) {
 };
 
 
-class ClassComponent extends React.Component {
+export class ClassComponent extends React.Component {
   state = {
     show : true
   }
