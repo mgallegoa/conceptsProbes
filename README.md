@@ -14,6 +14,7 @@ This repository have some projects for study different kind of technologies.
 - [Todo app](https://github.com/mgallegoa/conceptsProbes/blob/master/react-ts-todo-app/README.md) : FrontEnd project using React + Typescript + SEO + Testing(vitest) + Docker (Deploy in production) + Docker-compose + Oracle Cloud Infraestructure + Play Whit Docker.
 - [Containers](https://github.com/mgallegoa/conceptsProbes/blob/master/containers/README.md) : Containers concept probes, here are some projects to work with containers and documentation.
 - [rest-api-node](https://github.com/mgallegoa/conceptsProbes/blob/master/rest-api-node/README.md) : BackEnd project for exposing API Rest for play with users, use MongoDb [Clever Cloud](https://console.clever-cloud.com/)
+- [reactnewfeatures](https://github.com/mgallegoa/conceptsProbes/tree/master/reactnewfeatures/README.md) : React old project to show the Class Component vs Function Component.
 
 
 ## List of pages to deploy in production
