@@ -16,6 +16,24 @@ This easy project is for test the ways to create components in react.
 # > [!WARNING]
 > This project run with eslint V8, not upgrade the eslint because incompatibility with webpack
 
+## TESTING
+
+For testing use jest (@testing-library/dom, @testing-library/jest-dom, @testing-library/react, @testing-library/user-event)
+
+## DOCKER
+
+Use the Dockerfile in the docker folder, this app run in the port 3000 by default:
+Development:
+1. docker build -t manuelarias/react-new-features:v1 -f docker/Dockerfile .
+2. docker run -dp 7777:3000 --name reactnewfeatures -v /media/manuel/Datos/mgallegoa/conceptsProbes/reactnewfeatures/src:/app/react-new-features/src manuelarias/react-new-features:v1
+3. docker exec -it reactnewfeatures sh
+
+Production:
+1. docker build -t manuelarias/react-new-features_prod:v1 -f docker/Dockerfile.prod .
+2. docker run -dp 8080:3000 --name reactnewfeatures_prod manuelarias/react-new-features_prod:v1
+3. docker exec -it reactnewfeatures_prod sh
+
+
 ## Available Scripts
 
 In the project directory, you can run:
