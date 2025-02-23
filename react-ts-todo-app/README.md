@@ -21,6 +21,22 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
+## DOCKER
+
+Use the Dockerfile in the docker folder, this app run in the port 3000 by default:
+
+Development:
+
+1. docker build -t manuelarias/react-ts-todo-app:v1 -f docker/Dockerfile .
+2. docker run -dp 7777:5173 --name react-ts-todo-app -v /media/manuel/Datos/mgallegoa/conceptsProbes/react-ts-todo-app/src:/app/react-ts-todo-app/src manuelarias/react-ts-todo-app:v1
+3. docker exec -it react-ts-todo-app sh
+
+Production:
+
+1. docker build -t manuelarias/react-ts-todo-app_prod:v1 -f docker/Dockerfile.prod .
+2. docker run -dp 8080:4173 --name react-ts-todo-app_prod manuelarias/react-ts-todo-app_prod:v1
+3. docker exec -it react-ts-todo-app_prod sh
+
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
