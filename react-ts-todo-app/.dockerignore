@@ -1,0 +1,9 @@
+node_modules
+docker
+
+# Generic ignores
+*/*.md
+*/.git
+docs/
+src/docs/
+*/test/

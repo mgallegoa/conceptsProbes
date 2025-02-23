@@ -5,7 +5,7 @@ WORKDIR /app/react-ts-todo-app
 COPY package.json ./
 RUN npm install -g pnpm@latest-10 && pnpm install
 
-COPY ../ .
+COPY . .
 
 CMD ["pnpm", "run", "dev"]
 
