@@ -15,12 +15,13 @@ This app add items to a list.
 
 Create with React and Typescript and testing with vitest
 
-To run the project in local:
+To run the project (or see the [Docker section](#DOCKER) in this file):
 
-- pnpm install
-- pnpm run dev
-
-Go to the url: http//localhost:5174/
+```
+    pnpm install
+    pnpm run dev
+```
+Go to the url: http://localhost:5174/
 
 To run the project in docker [Read this section](#DOCKER)
 
