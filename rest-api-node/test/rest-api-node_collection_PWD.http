@@ -1,0 +1,38 @@
+###
+GET http://ip172-18-0-34-cv11kf0l2o90009bvn50-8080.direct.labs.play-with-docker.com/users
+
+###
+GET http://ip172-18-0-34-cv11kf0l2o90009bvn50-8080.direct.labs.play-with-docker.com/users/67c21bfab24c350012211cbe
+
+###
+POST http://ip172-18-0-34-cv11kf0l2o90009bvn50-8080.direct.labs.play-with-docker.com/users
+content-type: application/json
+
+{
+  "firstName" : "Manuel",
+  "lastName" :"Arias",
+  "email" : "pwd@example.com"
+}
+
+###
+PUT http://ip172-18-0-34-cv11kf0l2o90009bvn50-8080.direct.labs.play-with-docker.com/users/67c21bfab24c350012211cbe
+content-type: application/json
+
+{
+  "firstName" : "PUTUpdate Name Put",
+  "lastName" :"PUTUpdate lastName Put",
+  "email" : "PUTUpdate@example.com.co"
+}
+
+###
+PATCH http://ip172-18-0-34-cv11kf0l2o90009bvn50-8080.direct.labs.play-with-docker.com/users/67c2028ee10bd600ee87d2cc
+content-type: application/json
+
+{
+  "firstName" : "PATCHUpdate Name",
+  "lastName" :"PATCHUpdate lastName",
+  "email" : "PATCHupdate@example.com"
+}
+
+###
+DELETE http://ip172-18-0-34-cv11kf0l2o90009bvn50-8080.direct.labs.play-with-docker.com/users/67c21bfab24c350012211cbe
