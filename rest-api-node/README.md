@@ -27,14 +27,33 @@ Navigate to `http://localhost:3000/`. The app will automatically reload if you c
 
 ## TESTING
 
+# TESTING : Connect to the mongoDb using mongosh:
+
 Connect to the mongo database using mongosh (require to be installed):
 
 1. mongosh "mongodb://your_Credentials_URI_go_to\_https://console.clever-cloud.com/users/me/addons/"
 2. show dbs
 3. use data_Base_Name
 4. show collections
-5. db.yourCollectionName.find().pretty()
+5. db.users.find().pretty()
 6. db.users.findOne({ name: "John Doe" })
+
+# TESTING : Test using the request
+
+1. In folder ./test/rest-api-node.postman_collection.json find the examples of the request used with postman.
+2. In folder ./test/rest-api-node_collection.http examples of the request used with kulala nvim plugin. In the port number change to 3000 the request if NOT use the docker image.
+
+## Deploy Node application in Cleaver
+
+1. Create a node application.
+2. git remote add clever git+ssh://git@push-n3-par-clevercloud-customers.services.clever-cloud.com/app_a33c0c9b-03a5-4c72-a06a-0e1d467b44f2.git
+3. git push -u clever master
+
+Remember right access for the keys and add the private ssh key to the ssh agent:
+
+1. chmod 600 ~/.ssh/manuelCleverCloudmgallegoarias\@gmail.com
+2. chmod 644 ~/.ssh/manuelCleverCloudmgallegoarias\@gmail.com.pub
+3. ssh-add ~/.ssh/manuelCleverCloudmgallegoarias\@gmail.com (ssh-add -l)
 
 ## CUSTOM HOOK
 
@@ -46,11 +65,19 @@ Create a hook to add SEO to the page
 
 ## DOCKER
 
-Use the Dockerfile, this app run in the internal port 5174, use:
+Use the Dockerfile, this app run in the internal port 3000, use:
 
-1. docker build -t manuelarias/react-ts-list:v1 .
-2. docker run -dp 5555:5174 --name react-ts-list-app -v /media/manuel/Datos/mgallegoa/conceptsProbes/react-ts-list-app/src:/app/react-ts-list-app/src manuelarias/react-ts-list:v1
-3. docker exec -it react-ts-list-app bash
+Development: (Note: to run dev, delete the .env file from .dockerignore file)
+
+1. docker build -t manuelarias/rest-api-node:v1 -f docker/Dockerfile .
+2. docker run -dp 7777:3000 --name rest-api-node -v /media/manuel/Datos/mgallegoa/conceptsProbes/rest-api-node/src:/app/rest-api-node/src manuelarias/rest-api-node:v1
+3. docker exec -it rest-api-node sh
+
+Production:
+
+1. docker build -t manuelarias/rest-api-node_prod:v1 -f docker/Dockerfile.prod .
+2. docker run -dp 8080:3000 --name rest-api-node_prod --env MONGO_CONNECTION_URI="mongodb://your_user@your_server:27017,n2-c2-mongodb-clevercloud-customers.services.clever-cloud.com:27017/bqbgzm5svpnv0fg?replicaSet=rs0" manuelarias/rest-api-node_prod:v1
+3. docker exec -it rest-api-node_prod sh
 
 ## DOCKER - Compose
 
@@ -68,11 +95,11 @@ This is necessary for the crypto.randomUUID() method, the method is accessible f
 
 For testing in a Play With Docker page or Oracle Cloud, you can use cloudflare (WARP).
 
-# Run in Play With Docker PWD:
+# PWD : Run in Play With Docker:
 
-docker run -dp 8080:80 --name react-ts-list-app manuelarias/react-ts-list:v2
+docker run -dp 8080:3000 --env MONGO_CONNECTION_URI="mongodb://your_user@your_server:27017,n2-c2-mongodb-clevercloud-customers.services.clever-cloud.com:27017/bqbgzm5svpnv0fg?replicaSet=rs0" --name rest-api-node manuelarias/rest-api-node_prod:v1
 
-# Instructions to install WARP (cloudfare CLI) in an Alpine Linux server (Play With Docker use it):
+# PWD : Instructions to install WARP (cloudfare CLI) in an Alpine Linux server (Play With Docker use it):
 
 1. Download the Binary:
    wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -O /usr/local/bin/cloudflared
