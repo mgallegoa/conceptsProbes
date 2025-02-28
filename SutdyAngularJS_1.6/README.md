@@ -1,0 +1,63 @@
+# SutdyAngularJS_1.6 - Documentation (Old project for study Angular 1.6)
+
+               ███╗░░░███╗░█████╗░███╗░░██╗██╗░░░██╗███████╗██╗░░░░░
+               ████╗░████║██╔══██╗████╗░██║██║░░░██║██╔════╝██║░░░░░
+               ██╔████╔██║███████║██╔██╗██║██║░░░██║█████╗░░██║░░░░░
+               ██║╚██╔╝██║██╔══██║██║╚████║██║░░░██║██╔══╝░░██║░░░░░
+               ██║░╚═╝░██║██║░░██║██║░╚███║╚██████╔╝███████╗███████╗
+               ╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝░╚═════╝░╚══════╝╚══════╝
+
+## Description
+
+Important: This project was created in year 2018. Node version 8.x. Most of the libraries are deprecated.
+
+This simple project was create for practice in the use of Angular 1.6 in the front end.
+
+To run the project navigate to the first-concepts folder:
+```
+  npm install
+  npm run server
+```
+
+Navigate to `http://127.0.0.1:8080/`.
+
+## TESTING
+
+Navigate to `http://127.0.0.1:8080/`
+
+## Deploy Node application in Cleaver
+
+N/A
+
+## CUSTOM HOOK
+
+N/A
+
+## SEO
+
+N/A
+
+## DOCKER
+
+N/A
+
+## DOCKER - Compose
+
+N/A
+
+## HTTP and HTTPS
+
+N/A
+
+# PWD : Run in Play With Docker:
+
+N/A
+
+# PWD : Instructions to install WARP (cloudfare CLI) in an Alpine Linux server (Play With Docker use it):
+
+N/A
+
+# Instructions to install Oracle Command Infrastructure CLI in a machine running Alpine Linux:
+
+N/A
+
