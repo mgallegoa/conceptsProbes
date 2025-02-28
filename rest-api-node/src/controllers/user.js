@@ -1,8 +1,6 @@
-const User = require('../models/user');
-
+const User = require("../models/user");
 
 module.exports = {
-
   /*
    * index: function () {
     // callbacks method
@@ -24,9 +22,9 @@ module.exports = {
     res.json(users);
   },
   */
-  index : async (req, res, next) => {
-      const users = await User.find({});
-      res.status(200).json(users);
+  index: async (req, res, next) => {
+    const users = await User.find({});
+    res.status(200).json(users);
   },
 
   newUser: async (req, res, next) => {
@@ -34,7 +32,7 @@ module.exports = {
     const user = await newUser.save();
     res.status(200).json(user);
   },
-  
+
   getUser: async (req, res, next) => {
     const { userId } = req.params;
     const user = await User.findById(userId);
@@ -42,24 +40,32 @@ module.exports = {
   },
 
   //Method Put
-  replaceUser: async (req, res, next) => {
+  replaceUser: async (req, res) => {
     const { userId } = req.params;
     const newUser = req.body;
-    const oldUser = await User.findOneAndUpdate(userId, newUser);
-    res.status(200).json({success: true});
+    const replacedUser = await User.findByIdAndUpdate(userId, newUser, {
+      new: true,
+    });
+    res.status(200).json({ success: true, replacedUser });
   },
 
-  // Method Pach
-  updateUser: async (req, res, next) => {
+  // Method Patch
+  updateUser: async (req, res) => {
     const { userId } = req.params;
     const newUser = req.body;
-    const oldUser = await User.findOneAndUpdate(userId, newUser);
-    res.status(200).json({success: true});
+    const updatedUser = await User.findByIdAndUpdate(userId, newUser, {
+      new: true,
+    });
+    res.status(200).json({ success: true, updatedUser });
   },
 
   deleteUser: async (req, res, next) => {
     const { userId } = req.params;
-    await User.findOneAndRemove(userId);
-    res.status(200).json({success: true});
-  }
+    const deletedUser = await User.findByIdAndDelete(userId);
+    if (deletedUser) {
+      res.status(200).json({ success: true });
+    } else {
+      res.status(200).json({ success: false });
+    }
+  },
 };

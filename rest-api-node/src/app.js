@@ -12,7 +12,7 @@ const userRoutes = require("./routes/users");
 //This db is hosted on claver-cloud
 //"mongodb://ud7ptlvmm9xlaymbyn44:F3GvOYqA5pmvJ4yKxpwR@bqbgzm5svpnv0fg-mongodb.services.clever-cloud.com:27017/bqbgzm5svpnv0fg",
 mongoose
-  .connect(MONGO_CONNECTION_URI)
+  .connect(MONGO_CONNECTION_URI, { useFindAndModify: true })
   .then((db) => console.log("db is connected"))
   .catch((err) => console.log(err));
 
