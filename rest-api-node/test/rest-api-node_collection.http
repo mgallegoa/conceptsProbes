@@ -1,0 +1,38 @@
+###
+GET http://localhost:7777/users
+
+###
+GET http://localhost:7777/users/67c2028ee10bd600ee87d2cc
+
+###
+POST http://localhost:7777/users
+content-type: application/json
+
+{
+  "firstName" : "Manuel",
+  "lastName" :"Arias",
+  "email" : "mgallo@example.com"
+}
+
+###
+PUT http://localhost:7777/users/67c203f0e10bd600ee87d2de
+content-type: application/json
+
+{
+  "firstName" : "PUTUpdate Name Put",
+  "lastName" :"PUTUpdate lastName Put",
+  "email" : "PUTUpdate@example.com.co"
+}
+
+###
+PATCH http://localhost:7777/users/67c2028ee10bd600ee87d2cc
+content-type: application/json
+
+{
+  "firstName" : "PATCHUpdate Name",
+  "lastName" :"PATCHUpdate lastName",
+  "email" : "PATCHupdate@example.com"
+}
+
+###
+DELETE http://localhost:7777/users/67c2028ee10bd600ee87d2cc
