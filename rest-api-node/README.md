@@ -14,7 +14,7 @@ This project is for expose simple api for create user, list users, get user...
 
 Use a Mongo db for data base, this data base is located in https://console.clever-cloud.com/ for test.
 
-In folder ./test/rest-api-node.postman_collection.json find the examples of the request used with postman.
+In folder ./test/rest-api-node.postman_collection.json find the examples of the request used with postman and ./test/rest-api-node_collection.http for testing with kulala
 
 To run the project (or see the [Docker section](#DOCKER) in this file):
 
@@ -76,7 +76,7 @@ Development: (Note: to run dev, delete the .env file from .dockerignore file)
 Production:
 
 1. docker build -t manuelarias/rest-api-node_prod:v1 -f docker/Dockerfile.prod .
-2. docker run -dp 8080:3000 --name rest-api-node_prod --env MONGO_CONNECTION_URI="mongodb://your_user@your_server:27017,n2-c2-mongodb-clevercloud-customers.services.clever-cloud.com:27017/bqbgzm5svpnv0fg?replicaSet=rs0" manuelarias/rest-api-node_prod:v1
+2. docker run -dp 8080:3000 --name rest-api-node_prod --env MONGO_CONNECTION_URI="mongodb://ud7ptlvmm9xlaymbyn44:ZxeXMZXZatXNP0RQ4Gs7@n1-c2-mongodb-clevercloud-customers.services.clever-cloud.com:27017,n2-c2-mongodb-clevercloud-customers.services.clever-cloud.com:27017/bqbgzm5svpnv0fg?replicaSet=rs0" manuelarias/rest-api-node_prod:v1
 3. docker exec -it rest-api-node_prod sh
 
 ## DOCKER - Compose
@@ -97,7 +97,7 @@ For testing in a Play With Docker page or Oracle Cloud, you can use cloudflare (
 
 # PWD : Run in Play With Docker:
 
-docker run -dp 8080:3000 --env MONGO_CONNECTION_URI="mongodb://your_user@your_server:27017,n2-c2-mongodb-clevercloud-customers.services.clever-cloud.com:27017/bqbgzm5svpnv0fg?replicaSet=rs0" --name rest-api-node manuelarias/rest-api-node_prod:v1
+docker run -dp 8080:3000 --env MONGO_CONNECTION_URI="mongodb://ud7ptlvmm9xlaymbyn44:ZxeXMZXZatXNP0RQ4Gs7@n1-c2-mongodb-clevercloud-customers.services.clever-cloud.com:27017,n2-c2-mongodb-clevercloud-customers.services.clever-cloud.com:27017/bqbgzm5svpnv0fg?replicaSet=rs0" --name rest-api-node manuelarias/rest-api-node_prod:v1
 
 # PWD : Instructions to install WARP (cloudfare CLI) in an Alpine Linux server (Play With Docker use it):
 
