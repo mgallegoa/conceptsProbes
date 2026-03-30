@@ -1,0 +1,19 @@
+server:
+  port: 3000
+
+spring:
+  application:
+    name: SpringSecurity
+  datasource:
+    url: jdbc:mysql://mysql:3306/securitydb?createDatabaseIfNotExist=true
+    username: root
+    password: manuelpass
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+  # In the next section could configure the security basic credentials
+  # security:
+  #   user:
+  #     name: manuel
+  #     password: supersec
