@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -29,6 +28,35 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableMethodSecurity
 public class SecurityConfig {
 
+  // Example to configure the security without annotations in the FilterChain
+  // @Bean
+  // public SecurityFilterChain securityWebFilterChain(HttpSecurity httpSecurity)
+  // {
+  //
+  // return httpSecurity
+  // // For the csrf in forms
+  // .csrf(csrf -> csrf.disable())
+  // // Only with user and password
+  // .httpBasic(Customizer.withDefaults())
+  // // To manage stateless sessions
+  // .sessionManagement(session ->
+  // session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+  // // Configuration the endpoints
+  // .authorizeHttpRequests(http -> {
+  // // Public endpoints
+  // http.requestMatchers(HttpMethod.GET, "/auth/hello").permitAll();
+  // // Secured endpoints
+  // http.requestMatchers(HttpMethod.GET,
+  // "/auth/hello-secured").hasAuthority("READ");
+  // // Rest of endpoints: denyAll more secure and authenticated just with send
+  // // user/pass
+  // http.anyRequest().denyAll();
+  //
+  // })
+  // .build();
+  // }
+  //
+
   @Bean
   public SecurityFilterChain securityWebFilterChain(HttpSecurity httpSecurity) {
 
@@ -39,15 +67,6 @@ public class SecurityConfig {
         .httpBasic(Customizer.withDefaults())
         // To manage stateless sessions
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-        // Configuration the endpoints
-        .authorizeHttpRequests(http -> {
-          // Public endpoints
-          http.requestMatchers(HttpMethod.GET, "/auth/hello").permitAll();
-          // Secured endpoints
-          http.requestMatchers(HttpMethod.GET, "/auth/hello-secured").hasAuthority("READ");
-          // Rest of endpoints
-          http.anyRequest().denyAll();
-        })
         .build();
   }
 
