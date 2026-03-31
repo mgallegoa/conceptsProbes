@@ -2,6 +2,7 @@ package com.co.manuel.SpringSecurityApp.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -9,6 +10,7 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -25,7 +27,20 @@ public class SecurityConfig {
 
   @Bean
   public SecurityFilterChain securityWebFilterChain(HttpSecurity httpSecurity) {
-    return httpSecurity.build();
+
+    return httpSecurity
+        // For the csrf in forms
+        .csrf(csrf -> csrf.disable())
+        // To manage stateless sessions
+        .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+        // Configuration the endpoints
+        .authorizeHttpRequests(http -> {
+          http.requestMatchers(HttpMethod.GET, "/auth/hello").permitAll();
+          http.requestMatchers(HttpMethod.GET, "/auth/hello-secured").hasAuthority("READ");
+
+          http.anyRequest().denyAll();
+        })
+        .build();
   }
 
   @Bean
