@@ -10,7 +10,7 @@ spring:
     password: manuelpass
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: create-drop
     show-sql: true
   # In the next section could configure the security basic credentials
   # security:
