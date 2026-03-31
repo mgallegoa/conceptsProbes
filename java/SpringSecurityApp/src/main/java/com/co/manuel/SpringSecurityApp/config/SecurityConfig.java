@@ -1,11 +1,15 @@
 package com.co.manuel.SpringSecurityApp.config;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -31,13 +35,17 @@ public class SecurityConfig {
     return httpSecurity
         // For the csrf in forms
         .csrf(csrf -> csrf.disable())
+        // Only with user and password
+        .httpBasic(Customizer.withDefaults())
         // To manage stateless sessions
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         // Configuration the endpoints
         .authorizeHttpRequests(http -> {
+          // Public endpoints
           http.requestMatchers(HttpMethod.GET, "/auth/hello").permitAll();
+          // Secured endpoints
           http.requestMatchers(HttpMethod.GET, "/auth/hello-secured").hasAuthority("READ");
-
+          // Rest of endpoints
           http.anyRequest().denyAll();
         })
         .build();
@@ -57,12 +65,19 @@ public class SecurityConfig {
 
   @Bean
   public UserDetailsService userDetailsService() {
-    UserDetails userDetails = User.withUsername("manuel")
+    List<UserDetails> userDetails = new ArrayList<>();
+
+    userDetails.add(User.withUsername("manuel")
         .password("123")
         .roles("ADMIN")
         .authorities("READ", "CREATE")
-        .build();
+        .build());
 
+    userDetails.add(User.withUsername("joe")
+        .password("321")
+        .roles("USER")
+        .authorities("READ")
+        .build());
     return new InMemoryUserDetailsManager(userDetails);
 
   }
