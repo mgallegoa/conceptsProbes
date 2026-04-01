@@ -1,10 +1,31 @@
 @BASE_URL = http://localhost:3000/auth
 
-###
+### Not secure endpoint
+GET {{BASE_URL}}/hello
+
+### Basic secure endpoint
 GET {{BASE_URL}}/hello-secured
 Content-Type: application/json
 # Authorization: Basic bWFudWVsOjEyMw==
 Authorization: Basic manuel:123
 
-###
-GET {{BASE_URL}}/hello
+### Basic secure endpoint, the user don't have the role
+GET {{BASE_URL}}/hello-secured
+Content-Type: application/json
+Authorization: Basic fernando:321
+
+### Basic secure endpoint
+GET {{BASE_URL}}/get
+Content-Type: application/json
+Authorization: Basic arias:321
+
+### Basic secure endpoint
+POST {{BASE_URL}}/post
+Content-Type: application/json
+Authorization: Basic joe:321
+
+### Basic secure endpoint
+PATCH {{BASE_URL}}/patch
+Content-Type: application/json
+Authorization: Basic arias:321
+

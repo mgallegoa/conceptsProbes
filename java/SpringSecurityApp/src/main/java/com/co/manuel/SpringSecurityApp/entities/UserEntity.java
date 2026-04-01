@@ -16,12 +16,14 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-@Builder
 @AllArgsConstructor
+@Builder
+@NoArgsConstructor
 @Entity
 @Table(name = "users")
 public class UserEntity {
@@ -31,21 +33,21 @@ public class UserEntity {
   private Long id;
 
   @Column(unique = true)
-  private String usernaem;
+  private String username;
 
   private String password;
 
   @Column(name = "is_enable")
-  private boolean isEnagle;
+  private boolean isEnable;
 
   @Column(name = "account_No_Expired")
-  private boolean accountNoExpired;
+  private boolean accountNonExpired;
 
   @Column(name = "account_No_Locked")
-  private boolean accountNoLocked;
+  private boolean accountNonLocked;
 
   @Column(name = "credential_No_Expired")
-  private boolean credentialNoExpired;
+  private boolean credentialsNonExpired;
 
   @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
   @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))

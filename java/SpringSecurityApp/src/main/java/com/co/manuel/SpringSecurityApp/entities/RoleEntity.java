@@ -18,6 +18,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
@@ -25,6 +26,7 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @Entity
+@NoArgsConstructor
 @Table(name = "roles")
 public class RoleEntity {
 
@@ -37,7 +39,7 @@ public class RoleEntity {
   private RoleEnum roleEnum;
 
   @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-  @JoinTable(name = "role_perimissions", joinColumns = @JoinColumn(name = "role_id"), inverseJoinColumns = @JoinColumn(name = "permission_id"))
+  @JoinTable(name = "role_permissions", joinColumns = @JoinColumn(name = "role_id"), inverseJoinColumns = @JoinColumn(name = "permission_id"))
   private Set<PermissionEntity> permissionList;
 
 }

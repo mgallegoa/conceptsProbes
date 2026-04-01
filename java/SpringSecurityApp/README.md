@@ -14,3 +14,7 @@ Command Example for default user: curl -u "user" http://localhost:3000/auth/hell
 ## Model used:
 
 ![Spring Security API model image](./SpringSecurity.png)
+
+## Query for user, roles and permissions
+
+SELECT u.username, r.role_enum, p.name AS permission_name FROM users u INNER JOIN user_roles ur ON u.id = ur.user_id INNER JOIN roles r ON ur.role_id = r.id INNER JOIN role_permissions rp ON r.id = rp.role_id INNER JOIN permissions p ON rp.permission_id = p.id;
