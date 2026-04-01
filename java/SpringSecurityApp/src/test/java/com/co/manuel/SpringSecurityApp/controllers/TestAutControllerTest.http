@@ -9,10 +9,10 @@ Content-Type: application/json
 # Authorization: Basic bWFudWVsOjEyMw==
 Authorization: Basic manuel:123
 
-### Basic secure endpoint, the user don't have the role
+### Basic secure endpoint
 GET {{BASE_URL}}/hello-secured
 Content-Type: application/json
-Authorization: Basic fernando:321
+Authorization: Basic arias:321
 
 ### Basic secure endpoint
 GET {{BASE_URL}}/get
@@ -28,4 +28,9 @@ Authorization: Basic joe:321
 PATCH {{BASE_URL}}/patch
 Content-Type: application/json
 Authorization: Basic arias:321
+
+### Basic secure endpoint - the user don't have the role
+PATCH {{BASE_URL}}/patch
+Content-Type: application/json
+Authorization: Basic manuel:123
 

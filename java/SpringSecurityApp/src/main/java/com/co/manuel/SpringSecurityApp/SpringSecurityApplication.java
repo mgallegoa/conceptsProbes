@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.co.manuel.SpringSecurityApp.entities.PermissionEntity;
 import com.co.manuel.SpringSecurityApp.entities.RoleEntity;
@@ -45,21 +46,26 @@ public class SpringSecurityApplication {
           .build();
 
       /* Create the users */
-      UserEntity userManuel = UserEntity.builder().username("manuel").password("123").isEnable(true)
+      UserEntity userManuel = UserEntity.builder().username("manuel")
+          .password(new BCryptPasswordEncoder().encode("123")).isEnable(true)
           .accountNonExpired(true).accountNonLocked(true).credentialsNonExpired(true).roles(Set.of(adminRole)).build();
 
-      UserEntity userJoe = UserEntity.builder().username("joe").password("321").isEnable(true)
+      UserEntity userJoe = UserEntity.builder().username("joe").password(new BCryptPasswordEncoder().encode("321"))
+          .isEnable(true)
           .accountNonExpired(true).accountNonLocked(true).credentialsNonExpired(true).roles(Set.of(userRole)).build();
-      UserEntity userFernando = UserEntity.builder().username("fernando").password("321").isEnable(true)
+
+      UserEntity userFernando = UserEntity.builder().username("fernando")
+          .password(new BCryptPasswordEncoder().encode("321")).isEnable(true)
           .accountNonExpired(true).accountNonLocked(true).credentialsNonExpired(true).roles(Set.of(invitedRole))
           .build();
-      UserEntity userArias = UserEntity.builder().username("arias").password("321").isEnable(true)
+
+      UserEntity userArias = UserEntity.builder().username("arias").password(new BCryptPasswordEncoder().encode("321"))
+          .isEnable(true)
           .accountNonExpired(true).accountNonLocked(true).credentialsNonExpired(true).roles(Set.of(developRole))
           .build();
 
       /* Save Users */
       userRepository.saveAll(List.of(userManuel, userJoe, userFernando, userArias));
-      userRepository.flush();
     };
   }
 
