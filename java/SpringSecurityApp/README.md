@@ -1,4 +1,4 @@
-# Project using the Spring Security module
+# Project using BASIC AUTHENTICATION and Spring Security module
 
 ## Command used to create the project from console
 
