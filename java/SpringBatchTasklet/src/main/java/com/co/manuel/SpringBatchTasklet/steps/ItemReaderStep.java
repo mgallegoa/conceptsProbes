@@ -14,6 +14,7 @@ import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
 
+import com.co.manuel.SpringBatchTasklet.config.BatchConfiguration;
 import com.co.manuel.SpringBatchTasklet.entities.Person;
 import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
@@ -66,7 +67,7 @@ public class ItemReaderStep implements Tasklet {
         .getStepExecution()
         .getJobExecution()
         .getExecutionContext()
-        .put("personList", personList);
+        .put(BatchConfiguration.KEY_PERSON_LIST, personList);
 
     log.info("------ Finished READER Step ------ ");
     return RepeatStatus.FINISHED;

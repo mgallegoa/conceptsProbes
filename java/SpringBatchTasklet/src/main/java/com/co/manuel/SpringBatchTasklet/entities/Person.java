@@ -25,4 +25,7 @@ public class Person {
   private String lastName;
 
   private Integer age;
+
+  @Column(name = "create_date")
+  private String createDate;
 }
