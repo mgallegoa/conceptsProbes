@@ -3,8 +3,10 @@ package com.co.manuel.SpringBatchTasklet.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.co.manuel.SpringBatchTasklet.repositories.PersonRepository;
 import com.co.manuel.SpringBatchTasklet.steps.ItemProcessorStep;
 import com.co.manuel.SpringBatchTasklet.steps.ItemReaderStep;
+import com.co.manuel.SpringBatchTasklet.steps.ItemWriterStep;
 
 @Configuration
 public class BatchConfiguration {
@@ -19,5 +21,10 @@ public class BatchConfiguration {
   @Bean
   public ItemProcessorStep itemProcessorStep() {
     return new ItemProcessorStep();
+  }
+
+  @Bean
+  public ItemWriterStep itemWriterStep(PersonRepository personRepository) {
+    return new ItemWriterStep(personRepository);
   }
 }
