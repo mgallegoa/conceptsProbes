@@ -39,7 +39,7 @@ public class ItemWriterStep implements Tasklet {
 
     List<Person> personList = personRepository.findByProcessId(objProcessId.toString());
     // Print using Method Reference
-    personList.forEach(System.out::println);
+    personList.forEach(person -> log.info(person.getName() + " " + person.getLastName() + " -> " + person.getAge()));
 
     log.info("------ Finished WRITER Step ------ ");
     return RepeatStatus.FINISHED;

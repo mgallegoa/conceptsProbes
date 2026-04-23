@@ -71,14 +71,14 @@ public class BatchConfiguration {
 
   @Bean
   public Step processDataStep(JobRepository jobRepository, PlatformTransactionManager transactionManager) {
-    return new StepBuilder("itemReaderFileStep", jobRepository)
+    return new StepBuilder("itemProcessDataStep", jobRepository)
         .tasklet(itemProcessorStep(), transactionManager)
         .build();
   }
 
   @Bean
   public Step writeDataStep(JobRepository jobRepository, PlatformTransactionManager transactionManager) {
-    return new StepBuilder("itemReaderFileStep", jobRepository)
+    return new StepBuilder("itemWriteDataStep", jobRepository)
         .tasklet(itemWriterStep(personRepository), transactionManager)
         .build();
   }
