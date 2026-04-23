@@ -1,0 +1,29 @@
+###
+# @file-to-variable FILE_NAME /home/manuel/mgallegoa/conceptsProbes/java/SpringBatchTasklet/src/main/resources/files/persons.zip
+POST http://localhost:3000/api/v1/uploadFile
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary{{$timestamp}}
+
+------WebKitFormBoundary{{$timestamp}}
+Content-Disposition: form-data; name="file"; filename="personsToUpload.zip"
+Content-Type: text/csv
+
+# {{FILE_NAME}}
+< /home/manuel/mgallegoa/conceptsProbes/java/SpringBatchTasklet/src/test/personsToUpload.zip
+
+------WebKitFormBoundary{{$timestamp}}
+Content-Disposition: form-data; name="x"
+
+0
+------WebKitFormBoundary{{$timestamp}}
+Content-Disposition: form-data; name="y"
+
+1.4333333333333333
+------WebKitFormBoundary{{$timestamp}}
+Content-Disposition: form-data; name="w"
+
+514.5666666666667
+------WebKitFormBoundary{{$timestamp}}
+Content-Disposition: form-data; name="h"
+
+514.5666666666667
+------WebKitFormBoundary{{$timestamp}}--
