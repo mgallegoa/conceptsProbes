@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.co.manuel.SpringBatchTasklet.helpers.Constants;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -66,9 +68,8 @@ public class BatchController {
       log.info("-------------- Starting to launch the Job to process the file");
       JobParameters jobParameters = new JobParametersBuilder()
           .addLong("time", System.currentTimeMillis())
-          .addString("stringPath", target.toString())
-          .addString("fileName", fileName)
-          .addString("isReplaceFiles", "true")
+          .addString(Constants.STRING_PATH, target.toString())
+          .addString(Constants.IS_REPLACE_FILES, "true")
           .toJobParameters();
 
       jobLauncher.run(job, jobParameters);

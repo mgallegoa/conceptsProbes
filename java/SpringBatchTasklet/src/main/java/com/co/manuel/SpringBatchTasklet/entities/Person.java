@@ -28,4 +28,7 @@ public class Person {
 
   @Column(name = "create_date")
   private String createDate;
+
+  @Column(name = "process_id")
+  private String processId;
 }

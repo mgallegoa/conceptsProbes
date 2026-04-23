@@ -10,6 +10,7 @@ import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import com.co.manuel.SpringBatchTasklet.repositories.PersonRepository;
@@ -22,10 +23,11 @@ import com.co.manuel.SpringBatchTasklet.steps.ItemWriterStep;
 @EnableBatchProcessing
 public class BatchConfiguration {
 
-  public static final String KEY_PERSON_LIST = "personList";
-
   @Autowired
   private PersonRepository personRepository;
+
+  @Autowired
+  private ResourceLoader resourceLoader;
 
   @Bean
   // Just enable the object with spring batch, optimization
@@ -37,13 +39,13 @@ public class BatchConfiguration {
   @Bean
   @JobScope
   public ItemReaderStep itemReaderStep() {
-    return new ItemReaderStep();
+    return new ItemReaderStep(resourceLoader, personRepository);
   }
 
   @Bean
   @JobScope
   public ItemProcessorStep itemProcessorStep() {
-    return new ItemProcessorStep();
+    return new ItemProcessorStep(personRepository);
   }
 
   @Bean

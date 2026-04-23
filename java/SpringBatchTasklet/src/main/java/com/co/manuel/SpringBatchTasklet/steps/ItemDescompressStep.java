@@ -14,6 +14,8 @@ import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Value;
 
+import com.co.manuel.SpringBatchTasklet.helpers.Constants;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -26,8 +28,8 @@ public class ItemDescompressStep implements Tasklet {
   public RepeatStatus execute(StepContribution stepContribution, ChunkContext chunkContext) throws Exception {
     log.info("------ Init DESCOMPRESS Step ------ ");
 
-    Object objStringPath = chunkContext.getStepContext().getJobParameters().get("stringPath");
-    Object objIsReplaceFiles = chunkContext.getStepContext().getJobParameters().get("isReplaceFiles");
+    Object objStringPath = chunkContext.getStepContext().getJobParameters().get(Constants.STRING_PATH);
+    Object objIsReplaceFiles = chunkContext.getStepContext().getJobParameters().get(Constants.IS_REPLACE_FILES);
     if (objStringPath == null) {
       log.info("------ Not parameter for path - Finish DESCOMPRESS Step ------ ");
       return RepeatStatus.FINISHED;
@@ -47,6 +49,7 @@ public class ItemDescompressStep implements Tasklet {
     Path zipFilePath = Path.of(objStringPath.toString());
     Path destinationPath = Path.of(unZipFolder, zipFilePath.getName(zipFilePath.getNameCount() - 1).toString());
     Files.createDirectories(destinationPath);
+    Path newPath = null;
     // Read the zip File
     try (ZipInputStream zis = new ZipInputStream(
         new BufferedInputStream(Files.newInputStream(zipFilePath)))) {
@@ -54,7 +57,7 @@ public class ItemDescompressStep implements Tasklet {
       ZipEntry entry;
 
       while ((entry = zis.getNextEntry()) != null) {
-        Path newPath = resolveZipEntry(destinationPath, entry);
+        newPath = resolveZipEntry(destinationPath, entry);
 
         if (entry.isDirectory()) {
           Files.createDirectories(newPath);
@@ -69,7 +72,10 @@ public class ItemDescompressStep implements Tasklet {
       }
       zis.close();
     }
-
+    chunkContext.getStepContext()
+        .getStepExecution()
+        .getJobExecution()
+        .getExecutionContext().put(Constants.FILE_PATH_TO_PROCESS, newPath.toString());
     log.info("------ Finish DESCOMPRESS Step ------ ");
     return RepeatStatus.FINISHED;
   }
