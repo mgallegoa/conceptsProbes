@@ -1,5 +1,9 @@
 server:
   port: 3000
+  folders:
+    in: /home/manuel/mgallegoa/conceptsProbes/java/SpringBatchTasklet/data
+    zip: /home/manuel/mgallegoa/conceptsProbes/java/SpringBatchTasklet/data/zip
+    unzip: /home/manuel/mgallegoa/conceptsProbes/java/SpringBatchTasklet/data/unzip
 
 spring:
   application:
@@ -10,15 +14,21 @@ spring:
   #   password: manuelpass
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
     show-sql: true
-  # To enable the batch module
+  # To enable the batch module - use never for prod
   batch:
+    jdbc:
+      initialize-schema: always
+    # To run the jobs manualy, using REST(JobLauncher) or from CommanLineRunner bean
     job:
-      enabled: true
+      enabled: false
   # To enable the file use in spring
   servlet:
     multipart:
       enabled: true
       max-file-size: 10MB
       max-request-size: 10MB
+  sql:
+    init:
+      mode: always
