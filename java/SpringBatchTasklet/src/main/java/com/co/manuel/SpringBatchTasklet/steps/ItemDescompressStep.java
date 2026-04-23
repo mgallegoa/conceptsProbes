@@ -1,75 +1,99 @@
 package com.co.manuel.SpringBatchTasklet.steps;
 
-import static java.lang.System.lineSeparator;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.util.Enumeration;
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
+import java.util.zip.ZipInputStream;
 
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.repeat.RepeatStatus;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.ResourceLoader;
+import org.springframework.beans.factory.annotation.Value;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class ItemDescompressStep implements Tasklet {
 
-  @Autowired
-  private ResourceLoader resourceLoader;
+  @Value("${server.folders.unzip}")
+  private String unZipFolder;
 
   @Override
   public RepeatStatus execute(StepContribution stepContribution, ChunkContext chunkContext) throws Exception {
     log.info("------ Init DESCOMPRESS Step ------ ");
 
-    Resource resource = resourceLoader.getResource("classpath:files" + lineSeparator() + "person.zip");
-    String filePath = resource.getFile().getPath();
+    Object objStringPath = chunkContext.getStepContext().getJobParameters().get("stringPath");
+    Object objIsReplaceFiles = chunkContext.getStepContext().getJobParameters().get("isReplaceFiles");
+    if (objStringPath == null) {
+      log.info("------ Not parameter for path - Finish DESCOMPRESS Step ------ ");
+      return RepeatStatus.FINISHED;
+    }
+    Boolean isReplaceFiles = objIsReplaceFiles == null ? false : Boolean.valueOf(objIsReplaceFiles.toString());
+    /*
+     * For testing, get the resource folder
+     * 
+     * @Autowired
+     * private ResourceLoader resourceLoader;
+     *
+     * Resource resourceZipFile = resourceLoader
+     * .getResource("classpath:files" + getDefault().getSeparator() +
+     * "persons.zip");
+     */
 
+    Path zipFilePath = Path.of(objStringPath.toString());
+    Path destinationPath = Path.of(unZipFolder, zipFilePath.getName(zipFilePath.getNameCount() - 1).toString());
+    Files.createDirectories(destinationPath);
     // Read the zip File
-    ZipFile zipFile = new ZipFile(filePath);
-    // Destination path
-    File destDir = new File(resource.getFile().getParent(), "destination");
+    try (ZipInputStream zis = new ZipInputStream(
+        new BufferedInputStream(Files.newInputStream(zipFilePath)))) {
 
-    if (!destDir.exists()) {
-      destDir.mkdir();
-    }
+      ZipEntry entry;
 
-    // Read the zip file
-    Enumeration<? extends ZipEntry> entries = zipFile.entries();
+      while ((entry = zis.getNextEntry()) != null) {
+        Path newPath = resolveZipEntry(destinationPath, entry);
 
-    while (entries.hasMoreElements()) {
-      ZipEntry zipEntry = entries.nextElement();
-      File file = new File(destDir, zipEntry.getName());
-
-      if (zipEntry.isDirectory()) {
-        file.mkdir();
-      } else {
-        InputStream inputStream = zipFile.getInputStream(zipEntry);
-        FileOutputStream fileOutputStream = new FileOutputStream(file);
-
-        byte[] buffer = new byte[1024];
-        int length;
-
-        while ((length = inputStream.read(buffer)) > 0) {
-          fileOutputStream.write(buffer, 0, length);
+        if (entry.isDirectory()) {
+          Files.createDirectories(newPath);
+        } else {
+          // Create parent directories if needed
+          createFileDirectory(newPath, isReplaceFiles);
+          try (OutputStream os = Files.newOutputStream(newPath)) {
+            zis.transferTo(os);
+          }
         }
-        fileOutputStream.close();
-        inputStream.close();
+        zis.closeEntry();
       }
+      zis.close();
     }
-
-    zipFile.close();
 
     log.info("------ Finish DESCOMPRESS Step ------ ");
-
     return RepeatStatus.FINISHED;
+  }
+
+  private void createFileDirectory(Path newFile, boolean isReplaceFiles) throws IOException {
+    if (isReplaceFiles) {
+      Files.deleteIfExists(newFile);
+    }
+    if (Files.exists(newFile)) {
+      log.info("The file: " + newFile + " exist, don't replaced.");
+    } else {
+      Files.createDirectories(newFile.getParent());
+    }
+
+  }
+
+  private Path resolveZipEntry(Path targetDir, ZipEntry entry) throws IOException {
+    Path resolvedPath = targetDir.resolve(entry.getName()).normalize();
+
+    if (!resolvedPath.startsWith(targetDir)) {
+      throw new IOException("Bad zip entry: " + entry.getName());
+    }
+
+    return resolvedPath;
   }
 
 }
