@@ -9,6 +9,9 @@ spring:
     show-sql: true
   batch:
     job:
-      enable: true
+      enable: false
     jdbc:
       initialize-schema: always
+  sql:
+    init:
+      mode: always
