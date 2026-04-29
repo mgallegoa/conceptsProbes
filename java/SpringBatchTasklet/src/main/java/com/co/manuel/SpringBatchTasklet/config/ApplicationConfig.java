@@ -5,7 +5,10 @@ import javax.sql.DataSource;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.jdbc.datasource.init.DataSourceInitializer;
+import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 
 @Configuration
 @EnableBatchProcessing
@@ -21,4 +24,16 @@ public class ApplicationConfig {
     return dataSource;
   }
 
+  @Bean
+  public DataSourceInitializer batchInitializer(DataSource dataSource) {
+    ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
+    populator.addScript(
+        new ClassPathResource("org/springframework/batch/core/schema-mysql.sql"));
+
+    DataSourceInitializer initializer = new DataSourceInitializer();
+    initializer.setDataSource(dataSource);
+    initializer.setDatabasePopulator(populator);
+
+    return initializer;
+  }
 }
