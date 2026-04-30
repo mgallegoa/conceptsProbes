@@ -30,6 +30,7 @@ public class BatchConfig {
         .reader(personReader)
         .processor(personProcessor)
         .writer(personWriter)
+        // .taskExecutor(taskExecutor())
         .build();
 
     return step;
@@ -40,6 +41,21 @@ public class BatchConfig {
     return new JobBuilder("manuelJobReadFileChunk", jobRepository)
         .start(processFile)
         .build();
+
   }
+
+  /*
+   * Example to add executor, this could block the execution
+   * 
+   * @Bean
+   * public TaskExecutor taskExecutor() {
+   * ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
+   * taskExecutor.setCorePoolSize(1); // How many threads start the application
+   * taskExecutor.setMaxPoolSize(5); // If required more resource go to 5 threads
+   * taskExecutor.setQueueCapacity(5); // Max task in queue, important: not more
+   * process in memory
+   * return taskExecutor;
+   * }
+   */
 
 }
