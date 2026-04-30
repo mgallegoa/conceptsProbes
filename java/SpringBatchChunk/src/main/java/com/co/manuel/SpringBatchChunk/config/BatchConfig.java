@@ -6,6 +6,7 @@ import org.springframework.batch.core.configuration.annotation.EnableBatchProces
 import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.step.builder.StepBuilder;
+import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.context.annotation.Bean;
@@ -22,10 +23,12 @@ public class BatchConfig {
   @Bean
   public Step processFile(JobRepository jobRepository, PlatformTransactionManager transactionManager,
       ItemReader<Person> personReader,
+      ItemProcessor<Person, Person> personProcessor,
       ItemWriter<Person> personWriter) {
     Step step = new StepBuilder("manuelStepReadFile", jobRepository)
         .<Person, Person>chunk(2, transactionManager)// .tasklet()
         .reader(personReader)
+        .processor(personProcessor)
         .writer(personWriter)
         .build();
 
