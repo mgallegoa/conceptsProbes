@@ -2,12 +2,12 @@ package com.co.manuel.SpringBatchChunk.items;
 
 import java.nio.charset.StandardCharsets;
 
-import org.springframework.batch.infrastructure.item.ItemReader;
-import org.springframework.batch.infrastructure.item.file.FlatFileItemReader;
-import org.springframework.batch.infrastructure.item.file.LineMapper;
-import org.springframework.batch.infrastructure.item.file.mapping.BeanWrapperFieldSetMapper;
-import org.springframework.batch.infrastructure.item.file.mapping.DefaultLineMapper;
-import org.springframework.batch.infrastructure.item.file.transform.DelimitedLineTokenizer;
+import org.springframework.batch.item.ItemReader;
+import org.springframework.batch.item.file.FlatFileItemReader;
+import org.springframework.batch.item.file.LineMapper;
+import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
+import org.springframework.batch.item.file.mapping.DefaultLineMapper;
+import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
@@ -27,10 +27,11 @@ public class PersonItemReader {
   @Bean
   public ItemReader<Person> personReader() {
     Resource resource = resourceLoader.getResource("classpath:persons.csv");
-    FlatFileItemReader<Person> reader = new FlatFileItemReader<>(getLineMapper());
+    FlatFileItemReader<Person> reader = new FlatFileItemReader<>();
     reader.setResource(resource);
     reader.setLinesToSkip(1);
     reader.setEncoding(StandardCharsets.UTF_8.name());
+    reader.setLineMapper(getLineMapper());
 
     return reader;
   }
